@@ -1,37 +1,31 @@
 package com.bridge.addressbookApp.dto;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
+import lombok.ToString;
 
+
+@ToString
 public class ContactDTO {
     @Pattern(regexp = "^[A-Z]{1,}[a-zA-z\\s]{2,}$",message = "FirstName is invalid")
+    @NotEmpty(message = "FirstName cannot be NULL")
     public String firstName;
     @Pattern(regexp = "^[A-Z]{1,}[a-zA-z\\s]{2,}$",message = "LastName is invalid")
+    @NotEmpty(message = "LastName cannot be NULL")
     public String lastName;
     @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",message = "Email is invalid")
     public String email;
+    @NotEmpty(message = "Address cannot be NULL")
     public String address;
+    @NotEmpty(message = "State cannot be NULL")
     public String state;
+    @NotEmpty(message = "City cannot be NULL")
     public String city;
     @Pattern(regexp = "^[0-9]{3}\\s{0,1}[0-9]{3}$", message = "Invalid Zip")
     public String zip;
     @Pattern(regexp = "^^[0-9]{2}?[\\s,-]{0,1}[7-9]{1}[0-9]{9}$", message = "Invalid Phone number")
     public String phone;
 
-    public ContactDTO(String firstName, String lastName,String email, String address, String state, String city, String zip, String phone) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.address = address;
-        this.state = state;
-        this.city = city;
-        this.zip = zip;
-        this.phone = phone;
-    }
 
 
-    @Override
-    public String toString() {
-        return "ContactDTO [First Name =" + firstName + ", Last Name =" + lastName + ", Email =" + email + ", Address =" + address
-                + ", State =" + state + ", City =" + city + ", Zip =" + zip + ", Phone =" + phone + "]";
-    }
 }

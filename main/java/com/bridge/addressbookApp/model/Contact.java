@@ -1,24 +1,48 @@
 package com.bridge.addressbookApp.model;
 
 import com.bridge.addressbookApp.dto.ContactDTO;
-import lombok.Data;
 
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Entity
+@Table(name = "addressbook")
 @Data
 public class Contact {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Contact_Id")
     private int contactId;
-    public String firstName;
-    public String lastName;
-    public String email;
-    public String address;
-    public String state;
-    public String city;
-    public String zip;
-    public String phone;
+    @Column(name = "First_Name")
+    private String firstName;
+    @Column(name = "Last_Name")
+    private String lastName;
+    @Column(name = "Email")
+    private String email;
+    @Column(name = "Address")
+    private String address;
+    @Column(name = "State")
+    private String state;
+    @Column(name = "City")
+    private String city;
+    @Column(name = "Zip")
+    private String zip;
+    @Column(name = "Phone")
+    private String phone;
+
 
     public Contact(int contactId, ContactDTO contactDTO) {
         this.contactId = contactId;
         this.updateContact(contactDTO);
+    }
+    public Contact(ContactDTO contactDTO) {
+
+    }
+    public Contact() {
+
     }
 
     private void updateContact(ContactDTO contactDTO) {
