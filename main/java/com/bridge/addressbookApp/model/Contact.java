@@ -16,36 +16,42 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Contact_Id")
     private int contactId;
+
     @Column(name = "First_Name")
     private String firstName;
+
     @Column(name = "Last_Name")
     private String lastName;
+
     @Column(name = "Email")
     private String email;
+
     @Column(name = "Address")
     private String address;
+
     @Column(name = "State")
     private String state;
+
     @Column(name = "City")
     private String city;
+
     @Column(name = "Zip")
     private String zip;
+
     @Column(name = "Phone")
     private String phone;
 
 
-    public Contact(int contactId, ContactDTO contactDTO) {
-        this.contactId = contactId;
+    public Contact(ContactDTO contactDTO) {
         this.updateContact(contactDTO);
     }
-    public Contact(ContactDTO contactDTO) {
 
-    }
     public Contact() {
 
     }
 
-    private void updateContact(ContactDTO contactDTO) {
+    public void updateContact(ContactDTO contactDTO) {
+        this.contactId = contactId;
         this.firstName = contactDTO.firstName;
         this.lastName = contactDTO.lastName;
         this.email = contactDTO.email;

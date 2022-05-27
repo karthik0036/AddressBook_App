@@ -1,7 +1,9 @@
 package com.bridge.addressbookApp.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
+import lombok.Data;
 import lombok.ToString;
 
 
@@ -15,7 +17,7 @@ public class ContactDTO {
     public String lastName;
     @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",message = "Email is invalid")
     public String email;
-    @NotEmpty(message = "Address cannot be NULL")
+    @NotBlank(message = "Address cannot be  empty")
     public String address;
     @NotEmpty(message = "State cannot be NULL")
     public String state;

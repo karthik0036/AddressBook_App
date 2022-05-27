@@ -64,5 +64,12 @@ public class AddressBookController {
 
     }
 
+    @DeleteMapping("/deleteAll")
+    public ResponseEntity<ResponseDTO> deleteAllAddressBookData() {
+        String message = addressbookservice.deleteAllAddressBookData();
+        ResponseDTO respDTO = new ResponseDTO("DeleteAll:", message);
+        return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
+    }
+
 
 }
