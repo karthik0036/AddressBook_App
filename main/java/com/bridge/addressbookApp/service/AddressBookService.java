@@ -37,6 +37,7 @@ public class AddressBookService implements IAddressBookService {
         Contact contact = this.getContactById(contactId);
         contact.setFirstName(contactDTO.firstName);
         contact.setLastName(contactDTO.lastName);
+        contact.setAddress(contactDTO.email);
         contact.setAddress(contactDTO.address);
         contact.setState(contactDTO.state);
         contact.setCity(contactDTO.city);

@@ -7,6 +7,8 @@ public class ContactDTO {
     public String firstName;
     @Pattern(regexp = "^[A-Z]{1,}[a-zA-z\\s]{2,}$",message = "LastName is invalid")
     public String lastName;
+    @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",message = "Email is invalid")
+    public String email;
     public String address;
     public String state;
     public String city;
@@ -15,9 +17,10 @@ public class ContactDTO {
     @Pattern(regexp = "^^[0-9]{2}?[\\s,-]{0,1}[7-9]{1}[0-9]{9}$", message = "Invalid Phone number")
     public String phone;
 
-    public ContactDTO(String firstName, String lastName, String address, String state, String city, String zip, String phone) {
+    public ContactDTO(String firstName, String lastName,String email, String address, String state, String city, String zip, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.address = address;
         this.state = state;
         this.city = city;
@@ -28,7 +31,7 @@ public class ContactDTO {
 
     @Override
     public String toString() {
-        return "ContactDTO [First Name =" + firstName + ", Last Name =" + lastName + ", Address =" + address
+        return "ContactDTO [First Name =" + firstName + ", Last Name =" + lastName + ", Email =" + email + ", Address =" + address
                 + ", State =" + state + ", City =" + city + ", Zip =" + zip + ", Phone =" + phone + "]";
     }
 }
