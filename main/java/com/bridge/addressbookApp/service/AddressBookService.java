@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,11 +17,8 @@ public class AddressBookService implements IAddressBookService {
     @Autowired
     private AddressBookRepository addressBookRepository;
 
-    List<Contact> contactList = new ArrayList<>();
-
     @Override
     public List<Contact> getContact() {
-
         return addressBookRepository.findAll();
     }
 
@@ -55,6 +51,15 @@ public class AddressBookService implements IAddressBookService {
     public String deleteAllAddressBookData() {
         addressBookRepository.deleteAll();
         return "Successfully deleted all the Contacts from AddressBook";
+    }
+
+    @Override
+    public List<Contact> sortByCity() {
+        return addressBookRepository.sortByCity();
+    }
+    @Override
+    public List<Contact> sortByState() {
+        return addressBookRepository.sortByState();
     }
 
 }

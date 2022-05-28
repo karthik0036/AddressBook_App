@@ -3,7 +3,6 @@ package com.bridge.addressbookApp.controller;
 import com.bridge.addressbookApp.dto.ContactDTO;
 import com.bridge.addressbookApp.dto.ResponseDTO;
 import com.bridge.addressbookApp.model.Contact;
-import com.bridge.addressbookApp.service.AddressBookService;
 import com.bridge.addressbookApp.service.IAddressBookService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +21,7 @@ public class AddressBookController {
     @Autowired
     private IAddressBookService addressbookservice;
 
-    @RequestMapping(value = { "", "/", "/get" })
+    @GetMapping(value = { "", "/", "/get" })
     public ResponseEntity<ResponseDTO> getContactData() {
         List<Contact> contactList = addressbookservice.getContact();
         ResponseDTO response = new ResponseDTO("Get call success", contactList);
@@ -69,6 +68,22 @@ public class AddressBookController {
         String message = addressbookservice.deleteAllAddressBookData();
         ResponseDTO respDTO = new ResponseDTO("DeleteAll:", message);
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/sortbycity")
+    public ResponseEntity<ResponseDTO> sortByCity() {
+        List<Contact> contactList = null;
+        contactList = addressbookservice.sortByCity();
+        ResponseDTO response = new ResponseDTO("Get Call  is Successful Sort By City: ", contactList);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/sortbystate")
+    public ResponseEntity<ResponseDTO> sortByState() {
+        List<Contact> contactList = null;
+        contactList = addressbookservice.sortByState();
+        ResponseDTO response = new ResponseDTO("Get Call  is Successful Sort By City: ", contactList);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
     }
 
 
